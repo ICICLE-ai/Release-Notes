@@ -1,1 +1,478 @@
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Release_2023-04.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="icicle-release-2023-04">ICICLE Release 2023-04</h1>
+<p>Here at ICICLE, we aim to build the next generation of Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
+even more accessible to everyone and to drive its democratization further in the larger society.</p>
+<p>It is with great pleasure that we announce the first release of ICICLE CI components version <em><strong>2023-04</strong></em>.</p>
+<p>Our team has been working hard to bring you the following components:</p>
+<ul>
+<li>
+<p><strong>Base ICICLE Tapis Software v1.3.0</strong></p>
+<ul>
+<li>Tapis is a hosted, web-based API framework for securely managing computational workloads across infrastructure and institutions so that experts can focus on their research instead of the technology.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tapis Pods Service v1.3.0</strong></p>
+<ul>
+<li>The Tapis Pods Service provides a web service and distributed platform providing Pods-as-a-Service platform via Kubernetes.  The primary use of this service is to provide quick to deploy long-lived services based on Docker images that are exposed via HTTP or TCP endpoints.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hello ICICLE Authentication Clients v0.0.1</strong></p>
+<ul>
+<li>Hello ICICLE Authentication consists of two command line interface (CLI) tools to authenticate with the Tapis Pods service. The first tool, ICICONSOLE, is specifically tailored to working with Neo4j databases hosted through the Tapis Pods. The second tool, TapisCL-ICICLE, allows the user to manage, operate, and interactively explore Tapis services.</li>
+</ul>
+</li>
+<li>
+<p><strong>People-Places-Organizations-Datasets (PPOD) Schema v0.9.1</strong></p>
+<ul>
+<li>A LinkML schema for a version of the PPOD (Persons-Projects-Organizations-Datasets) data pattern that describes resources being cataloged by the UC Davis Food Systems Lab. These resources are pertinent to California foodsheds and conservation activities and include lists of organizations, people, programs, projects, tools, datasets, guidelines, and mandates.</li>
+</ul>
+</li>
+<li>
+<p><strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.1</strong></p>
+<ul>
+<li>Hosted using our Tapis Pods Service, the Smart Foodsheds VA Dashboard is a visual analytics system built for smart foodsheds that offers a dynamic and engaging way to explore graph data. The dashboard currently has access to PPOD and Cold Chain datasets.</li>
+</ul>
+</li>
+<li>
+<p><strong>Event Engine v0.2.0</strong></p>
+<ul>
+<li>The Event Engine is a framework for edge simulators and for writing event-based applications in <em>Rust</em>. The Event Engine utilizes a <em>plugin</em> architecture so that they can be written in multiple languages.</li>
+</ul>
+</li>
+<li>
+<p><strong>Camera-Traps Edge Simulator v0.3.0</strong></p>
+<ul>
+<li>Both a simulator and an edge device application for classifying images with the first deployment specializing in wildlife images. The Camera-Traps Edge Simulator utilizes the Event Engine to implement its <em>plugin</em> architecture and <em>event-driven</em> communication.</li>
+</ul>
+</li>
+<li>
+<p><strong>HPC Application Runtime Predictor (HARP) v1.0</strong></p>
+<ul>
+<li>The HARP framework is used to generate a history of executions with the help of human-in-loop (pre-defined configurations) and train suitable regression models to estimate the approximate execution time for a targeted application.</li>
+</ul>
+</li>
+<li>
+<p><strong>Intelligent Sparse Library (iSipLib) v1.0</strong></p>
+<ul>
+<li>iSipLib is an accelerated sparse kernel library with a PyTorch interface. It aims to provide efficient sparse operations for Graph Neural Network implementations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Software Pilot v1.2.5</strong></p>
+<ul>
+<li>SoftwarePilot is an open source middleware and API that supports aerial applications. It allows users to connect consumer Parrot Anafi drones and access the drone's flight controller, camera, and navigation system via Python scripts. SoftwarePilot can also communicate with applications via a REST API and built-in Docker integration.</li>
+</ul>
+</li>
+<li>
+<p><strong>CI Components Catalog v0.1.0</strong></p>
+<ul>
+<li>Hosted using our Tapis Pods Service, the CI Components Catalog showcases the most up-to-date released CI components available to the public.</li>
+</ul>
+</li>
+<li>
+<p><strong>ICICLE Digital Agriculture Hub v1.0</strong></p>
+<ul>
+<li>The Digital Agriculture Hub is the source for end users to access data-driven, edge services such as aerial scouting and sprayer control, and to initiate cloud jobs for agricultural workloads.</li>
+</ul>
+</li>
+<li>
+<p><strong>Far-Edge Edge Simulator v1.0</strong></p>
+<ul>
+<li>This tool is used to simulate power demands, cpu usage and other far-edge metrics for aerial missions. You can use Far-Edge Edge Simulator by visiting the Digital Agriculture Hub and selecting the &quot;Far-Edge Edge Simulator&quot; tab.</li>
+</ul>
+</li>
+<li>
+<p><strong>Set GPS Boundaries v1.0</strong></p>
+<ul>
+<li>An interactive visual tool for using <em>Mapbox</em> to get a polygon represented by GPS edges. Visit the Digital Agriculture Hub and select the &quot;Set GPS Boundaries&quot; tab to use this tool.</li>
+</ul>
+</li>
+<li>
+<p><strong>Image Labeling Tool v1.0</strong></p>
+<ul>
+<li>A Simple python program that can conveniently and quickly labels crop disease in agricultural images. You can use this tool by visiting the Digital Agriculture Hub and selecting the &quot;Image Labeling Tool&quot; tab.</li>
+</ul>
+</li>
+<li>
+<p><strong>In-Field Helper for Crop Scouts v1.0</strong></p>
+<ul>
+<li>Given (1) a set of agricultural images labeled by a neural network and (2) a set of images on a new field, this tool explains to scouts if the images of the new field fully vet the neural network. Go to the Digital Agriculture Hub and select the &quot;In-Field Helper for Crop Scouts&quot; tab to use this tool.</li>
+</ul>
+</li>
+</ul>
+<p>The ICICLE team is committed to providing you with the best CI components possible. We welcome your feedback and suggestions for future releases.</p>
+<p>Please subscribe to <a href="https://lists.osu.edu/mailman/listinfo/icicle-discuss">icicle-discuss</a> to discuss all installation/build problems, performance issues, features and other miscellaneous questions related to the different software and CI components of the ICICLE project.</p>
+<p>Subscribe to our mailing list <a href="https://lists.osu.edu/mailman/listinfo/icicle-announce">icicle-announce</a> to stay up to date on the latest ICICLE news and releases.</p>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p><em>This release is brought to you by the National Science Foundation funded AI institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE) and funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606)</em></p>
+
+</body>
+</html>
