@@ -366,53 +366,13 @@ code {
     });
   </script>
 <h1 id="icicle-release-2023-04">ICICLE Release 2023-04</h1>
-<p>Here at ICICLE, we aim to build the next generation of Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
-even more accessible to everyone and to drive its democratization further in the larger society.</p>
+<p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
+more accessible to everyone and to drive its democratization further in solving larger societal problems.</p>
 <p>It is with great pleasure that we announce the first release of ICICLE CI components version <em><strong>2023-04</strong></em>.</p>
-<p>Our team has been working hard to bring you the following components:</p>
+<p>This release includes the following components:</p>
+<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+<h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
 <ul>
-<li>
-<p><strong>Base ICICLE Tapis Software v1.3.0</strong></p>
-<ul>
-<li>Tapis is a hosted, web-based API framework for securely managing computational workloads across infrastructure and institutions so that experts can focus on their research instead of the technology.</li>
-</ul>
-</li>
-<li>
-<p><strong>Tapis Pods Service v1.3.0</strong></p>
-<ul>
-<li>The Tapis Pods Service provides a web service and distributed platform providing Pods-as-a-Service platform via Kubernetes.  The primary use of this service is to provide quick to deploy long-lived services based on Docker images that are exposed via HTTP or TCP endpoints.</li>
-</ul>
-</li>
-<li>
-<p><strong>Hello ICICLE Authentication Clients v0.0.1</strong></p>
-<ul>
-<li>Hello ICICLE Authentication consists of two command line interface (CLI) tools to authenticate with the Tapis Pods service. The first tool, ICICONSOLE, is specifically tailored to working with Neo4j databases hosted through the Tapis Pods. The second tool, TapisCL-ICICLE, allows the user to manage, operate, and interactively explore Tapis services.</li>
-</ul>
-</li>
-<li>
-<p><strong>People-Places-Organizations-Datasets (PPOD) Schema v0.9.1</strong></p>
-<ul>
-<li>A LinkML schema for a version of the PPOD (Persons-Projects-Organizations-Datasets) data pattern that describes resources being cataloged by the UC Davis Food Systems Lab. These resources are pertinent to California foodsheds and conservation activities and include lists of organizations, people, programs, projects, tools, datasets, guidelines, and mandates.</li>
-</ul>
-</li>
-<li>
-<p><strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.1</strong></p>
-<ul>
-<li>Hosted using our Tapis Pods Service, the Smart Foodsheds VA Dashboard is a visual analytics system built for smart foodsheds that offers a dynamic and engaging way to explore graph data. The dashboard currently has access to PPOD and Cold Chain datasets.</li>
-</ul>
-</li>
-<li>
-<p><strong>Event Engine v0.2.0</strong></p>
-<ul>
-<li>The Event Engine is a framework for edge simulators and for writing event-based applications in <em>Rust</em>. The Event Engine utilizes a <em>plugin</em> architecture so that they can be written in multiple languages.</li>
-</ul>
-</li>
-<li>
-<p><strong>Camera-Traps Edge Simulator v0.3.0</strong></p>
-<ul>
-<li>Both a simulator and an edge device application for classifying images with the first deployment specializing in wildlife images. The Camera-Traps Edge Simulator utilizes the Event Engine to implement its <em>plugin</em> architecture and <em>event-driven</em> communication.</li>
-</ul>
-</li>
 <li>
 <p><strong>HPC Application Runtime Predictor (HARP) v1.0</strong></p>
 <ul>
@@ -425,54 +385,77 @@ even more accessible to everyone and to drive its democratization further in the
 <li>iSipLib is an accelerated sparse kernel library with a PyTorch interface. It aims to provide efficient sparse operations for Graph Neural Network implementations.</li>
 </ul>
 </li>
-<li>
-<p><strong>Software Pilot v1.2.5</strong></p>
+</ul>
+<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
 <ul>
-<li>SoftwarePilot is an open source middleware and API that supports aerial applications. It allows users to connect consumer Parrot Anafi drones and access the drone's flight controller, camera, and navigation system via Python scripts. SoftwarePilot can also communicate with applications via a REST API and built-in Docker integration.</li>
+<li>
+<p><strong>Base ICICLE Tapis Software v1.3.0</strong></p>
+<ul>
+<li>Tapis is a hosted, web-based API framework for securely managing computational workloads across infrastructure and institutions so that experts can focus on their research instead of the technology.</li>
+</ul>
+</li>
+<li>
+<p><strong>Event Engine v0.2.0</strong></p>
+<ul>
+<li>The Event Engine is a framework for edge simulators and for writing event-based applications in <em>Rust</em>. The Event Engine utilizes a <em>plugin</em> architecture so that they can be written in multiple languages.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hello ICICLE Authentication Clients v0.0.1</strong></p>
+<ul>
+<li>Hello ICICLE Authentication consists of two command line interface (CLI) tools to authenticate with the Tapis Pods service. The first tool, ICICONSOLE, is specifically tailored to working with Neo4j databases hosted through the Tapis Pods. The second tool, TapisCL-ICICLE, allows the user to manage, operate, and interactively explore Tapis services.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tapis Pods Service v1.3.0</strong></p>
+<ul>
+<li>The Tapis Pods Service provides a web service and distributed platform providing Pods-as-a-Service platform via Kubernetes.  The primary use of this service is to provide quick to deploy long-lived services based on Docker images that are exposed via HTTP or TCP endpoints.</li>
 </ul>
 </li>
 <li>
 <p><strong>CI Components Catalog v0.1.0</strong></p>
 <ul>
-<li>Hosted using our Tapis Pods Service, the CI Components Catalog showcases the most up-to-date released CI components available to the public.</li>
+<li>Hosted using our Tapis Pods Service, the CI Components Catalog showcases the most up-to-date released ICICLE CI components available to the public.</li>
+</ul>
+</li>
+</ul>
+<h2 id="use-inspired-science">Use Inspired Science</h2>
+<h3 id="animal-ecology">Animal Ecology</h3>
+<ul>
+<li><strong>Camera-Traps Edge Simulator v0.3.0</strong>
+<ul>
+<li>Both a simulator and an edge device application for classifying images with the first deployment specializing in wildlife images. The Camera-Traps Edge Simulator utilizes the Event Engine to implement its <em>plugin</em> architecture and <em>event-driven</em> communication.</li>
+</ul>
+</li>
+</ul>
+<h3 id="digital-agriculture">Digital Agriculture</h3>
+<ul>
+<li><strong>SoftwarePilot v1.2.5</strong>
+<ul>
+<li>SoftwarePilot is an open source middleware and API that supports aerial applications. It allows users to connect consumer Parrot Anafi drones and access the drone's flight controller, camera, and navigation system via Python scripts. SoftwarePilot can also communicate with applications via a REST API and built-in Docker integration.</li>
+</ul>
+</li>
+</ul>
+<h3 id="smart-foodsheds">Smart Foodsheds</h3>
+<ul>
+<li>
+<p><strong>People-Places-Organizations-Datasets (PPOD) Schema v0.9.1</strong></p>
+<ul>
+<li>A LinkML schema for a version of the PPOD (Persons-Projects-Organizations-Datasets) data pattern that describes resources being cataloged by the UC Davis Food Systems Lab. These resources are pertinent to California foodsheds and conservation activities and include lists of organizations, people, programs, projects, tools, datasets, guidelines, and mandates.</li>
 </ul>
 </li>
 <li>
-<p><strong>ICICLE Digital Agriculture Hub v1.0</strong></p>
+<p><strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.1</strong></p>
 <ul>
-<li>The Digital Agriculture Hub is the source for end users to access data-driven, edge services such as aerial scouting and sprayer control, and to initiate cloud jobs for agricultural workloads.</li>
-</ul>
-</li>
-<li>
-<p><strong>Far-Edge Edge Simulator v1.0</strong></p>
-<ul>
-<li>This tool is used to simulate power demands, cpu usage and other far-edge metrics for aerial missions. You can use Far-Edge Edge Simulator by visiting the Digital Agriculture Hub and selecting the &quot;Far-Edge Edge Simulator&quot; tab.</li>
-</ul>
-</li>
-<li>
-<p><strong>Set GPS Boundaries v1.0</strong></p>
-<ul>
-<li>An interactive visual tool for using <em>Mapbox</em> to get a polygon represented by GPS edges. Visit the Digital Agriculture Hub and select the &quot;Set GPS Boundaries&quot; tab to use this tool.</li>
-</ul>
-</li>
-<li>
-<p><strong>Image Labeling Tool v1.0</strong></p>
-<ul>
-<li>A Simple python program that can conveniently and quickly labels crop disease in agricultural images. You can use this tool by visiting the Digital Agriculture Hub and selecting the &quot;Image Labeling Tool&quot; tab.</li>
-</ul>
-</li>
-<li>
-<p><strong>In-Field Helper for Crop Scouts v1.0</strong></p>
-<ul>
-<li>Given (1) a set of agricultural images labeled by a neural network and (2) a set of images on a new field, this tool explains to scouts if the images of the new field fully vet the neural network. Go to the Digital Agriculture Hub and select the &quot;In-Field Helper for Crop Scouts&quot; tab to use this tool.</li>
+<li>Hosted using our Tapis Pods Service, the Smart Foodsheds VA Dashboard is a visual analytics system built for smart foodsheds that offers a dynamic and engaging way to explore graph data. The dashboard currently has access to PPOD and Cold Chain datasets.</li>
 </ul>
 </li>
 </ul>
-<p>The ICICLE team is committed to providing you with the best CI components possible. We welcome your feedback and suggestions for future releases.</p>
-<p>Please subscribe to <a href="https://lists.osu.edu/mailman/listinfo/icicle-discuss">icicle-discuss</a> to discuss all installation/build problems, performance issues, features and other miscellaneous questions related to the different software and CI components of the ICICLE project.</p>
+<p>The ICICLE team is committed to delivering the best software and CI components. We welcome your feedback and suggestions for future releases.</p>
+<p>Please subscribe to <a href="https://lists.osu.edu/mailman/listinfo/icicle-discuss">icicle-discuss</a> and post to discuss all installation/build problems, performance issues, features and other miscellaneous questions related to the different software and CI components of the ICICLE project. You are welcome to post patches and enhancements to the released components.</p>
 <p>Subscribe to our mailing list <a href="https://lists.osu.edu/mailman/listinfo/icicle-announce">icicle-announce</a> to stay up to date on the latest ICICLE news and releases.</p>
 <h1 id="acknowledgements">Acknowledgements</h1>
-<p><em>This release is brought to you by the National Science Foundation funded AI institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE) and funded by grants from the National Science Foundation, including the ICICLE AI Institute (OAC 2112606)</em></p>
+<p><em>This release is brought to you by the National Science Foundation (NSF) funded AI institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE) (OAC 2112606)</em></p>
 
 </body>
 </html>
