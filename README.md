@@ -40,10 +40,10 @@ This release includes the following components:
   
 #### Digital Agriculture
 - **SoftwarePilot v1.2.5**
-    - SoftwarePilot is an open source middleware and API that supports aerial applications. It allows users to connect consumer Parrot Anafi drones and access the drone's flight controller, camera, and navigation system via Python scripts. SoftwarePilot can also communicate with applications via a REST API and built-in Docker integration.
+    - SoftwarePilot is an open-source middleware and API that supports aerial applications. It allows users to connect consumer Parrot Anafi drones and access the drone's flight controller, camera, and navigation system via Python scripts. SoftwarePilot can also communicate with applications via a REST API and built-in Docker integration.
   
 #### Smart Foodsheds
-- **People-Places-Organizations-Datasets (PPOD) Schema v0.9.1**
+- **Persons-Projects-Organizations-Datasets (PPOD) Schema v0.9.1**
     - A LinkML schema for a version of the PPOD (Persons-Projects-Organizations-Datasets) data pattern that describes resources being cataloged by the UC Davis Food Systems Lab. These resources are pertinent to California foodsheds and conservation activities and include lists of organizations, people, programs, projects, tools, datasets, guidelines, and mandates.
 
 - **Smart Foodsheds Visual Analytics (VA) Dashboard v0.1**
