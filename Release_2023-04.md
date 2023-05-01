@@ -1,6 +1,4 @@
-# Release-Notes
-
-## ICICLE Release 2023-04
+# ICICLE Release 2023-04
 
 The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
 more accessible to everyone and to drive its democratization further in solving larger societal problems. 
@@ -9,15 +7,15 @@ It is with great pleasure that we announce the first release of ICICLE CI compon
 
 This release includes the following components:
 
-### Intelligent Cyberinfrastructure
-#### AI for CI-for-AI
+## Intelligent Cyberinfrastructure
+### AI for CI-for-AI
 - **HPC Application Runtime Predictor (HARP) v1.0**
     - The HARP framework is used to generate a history of executions with the help of human-in-loop (pre-defined configurations) and train suitable regression models to estimate the approximate execution time for a targeted application.
 
 - **Intelligent Sparse Library (iSipLib) v1.0**
   - iSipLib is an accelerated sparse kernel library with a PyTorch interface. It aims to provide efficient sparse operations for Graph Neural Network implementations. 
   
-#### Software Architecture and Design
+### Software Architecture and Design
 - **Base ICICLE Tapis Software v1.3.0**
     - Tapis is a hosted, web-based API framework for securely managing computational workloads across infrastructure and institutions so that experts can focus on their research instead of the technology.
   
@@ -33,16 +31,16 @@ This release includes the following components:
 - **CI Components Catalog v0.1.0**
     - Hosted using our Tapis Pods Service, the CI Components Catalog showcases the most up-to-date released ICICLE CI components available to the public.
 
-### Use Inspired Science
-#### Animal Ecology
+## Use Inspired Science
+### Animal Ecology
 - **Camera-Traps Edge Simulator v0.3.0**
     - Both a simulator and an edge device application for classifying images with the first deployment specializing in wildlife images. The Camera-Traps Edge Simulator utilizes the Event Engine to implement its *plugin* architecture and *event-driven* communication.
   
-#### Digital Agriculture
+### Digital Agriculture
 - **SoftwarePilot v1.2.5**
     - SoftwarePilot is an open-source middleware and API that supports aerial applications. It allows users to connect consumer Parrot Anafi drones and access the drone's flight controller, camera, and navigation system via Python scripts. SoftwarePilot can also communicate with applications via a REST API and built-in Docker integration.
   
-#### Smart Foodsheds
+### Smart Foodsheds
 - **Persons-Projects-Organizations-Datasets (PPOD) Schema v0.9.1**
     - A LinkML schema for a version of the PPOD (Persons-Projects-Organizations-Datasets) data pattern that describes resources being cataloged by the UC Davis Food Systems Lab. These resources are pertinent to California foodsheds and conservation activities and include lists of organizations, people, programs, projects, tools, datasets, guidelines, and mandates.
 
@@ -56,5 +54,5 @@ Please subscribe to [icicle-discuss](https://lists.osu.edu/mailman/listinfo/icic
 
 Subscribe to our mailing list [icicle-announce](https://lists.osu.edu/mailman/listinfo/icicle-announce) to stay up to date on the latest ICICLE news and releases.
 
-## Acknowledgements
+# Acknowledgements
 *This release is brought to you by the National Science Foundation (NSF) funded AI institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE) (OAC 2112606)*
