@@ -12,8 +12,8 @@ This release includes the following components:
 - **HPC Application Runtime Predictor (HARP) v1.0**
     - The HARP framework is used to generate a history of executions with the help of human-in-loop (pre-defined configurations) and train suitable regression models to estimate the approximate execution time for a targeted application.
 
-- **Intelligent Sparse Library (iSipLib) v1.0**
-  - iSipLib is an accelerated sparse kernel library with a PyTorch interface. It aims to provide efficient sparse operations for Graph Neural Network implementations. 
+- **Intelligent Sparse Library (iSpLib) v1.0**
+  - iSpLib is an accelerated sparse kernel library with a PyTorch interface. It aims to provide efficient sparse operations for Graph Neural Network implementations. 
   
 ### Software Architecture and Design
 - **Base ICICLE Tapis Software v1.3.0**
