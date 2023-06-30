@@ -58,6 +58,7 @@ This release includes the following components:
       3. Service no longer requires initial, or any, manual certificate creation.
       4. Some edits for Neo4j as it requires a injected cert.
       5. Changes for local dev as it's now different from deployment.
+         
 - **TapisCL-ICICLE v0.1.4**
     - Changes:
       1.  Added Tapis federated authentication, and device code authentication grant types to allow for more flexible access to Tapis resources. Full revamp of the whole authentication workflow.
@@ -69,6 +70,7 @@ This release includes the following components:
       1. Finish upgrading system authentication to fully complete system access
       2. Upgrade app commands and eventually implement intuitive job submission
       3. Refactor help generation code
+         
 - **ICICONSOLE v0.0.10**
     - Changes:
       1. Improved user interface for select queries. Now, the user can select a query from a list of available queries (help command), and the query will be executed automatically. This works toward an automated process for querying Knowledge Graphs.
@@ -88,6 +90,7 @@ This release includes the following components:
       2. Removal of image_uuid field from ImageLabelScore type used in ImageScoredEvent.
       3. MonitorPowerStartEvent and MonitorPowerStopEvent implemented in Rust (Python support in progress).
       4. The image_store_plugin deletes files of all types associated with an image when that image is deleted.
+         
 ### Visual Analytics
 - **Smart Foodsheds Visual Analytics (VA) Dashboard v0.2**
     - New Features:
