@@ -380,6 +380,176 @@
             : "default",
       });
     </script>
+  <div id="icicle-release-2024-01">
+    <h1 id="icicle-release-2024-01">ICICLE Release 2024-01</h1>
+<p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
+more accessible to everyone and to drive its democratization further in solving larger societal problems. </p>
+<p>It is with great pleasure that we announce the <strong><em>2024-01</em></strong> release of ICICLE CI components.</p>
+<p>This release includes the following components:</p>
+<h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
+<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+<h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
+<ul>
+<li><a href="https://github.com/COS-IN/iluvatar-faas/tree/icicle-release-v1"><strong>Iluvatar Functions as a Service (FaaS) Control Plane v1.0.0</strong></a><ul>
+<li>Iluvatar is an open Serverless platform built with the goal of jumpstarting and streamlining FaaS research. It provides a system that is easy and consistent to use, highly modifiable, and directly reports experimental results.</li>
+</ul>
+</li>
+</ul>
+<h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
+<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
+<ul>
+<li><a href="https://tapis.readthedocs.io/en/latest/technical/authentication.html#oauth-clients"><strong>Tapis Federated Authentication Service v1.5.0</strong></a><ul>
+<li>New features:<ul>
+<li>Tenants are now able to determine how long the MFA authentication should last before the user has to re-enter their MFA</li>
+<li>Updated HTML - all of the different pages of the authentication workflow now have updated design layouts</li>
+</ul>
+</li>
+<li>Bug Fixes:<ul>
+<li>The device code flow, starting with GET /v3/device?client_id=<client_id>, is now working for all login methods</li>
+<li>The language for the user code form of the device flow is now more clear</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href="https://tapis.readthedocs.io/en/latest/technical/pods.html"><strong>Tapis Pods Service v1.5.3</strong></a><ul>
+<li>Breaking Changes:<ul>
+<li>Implemented direct access to NFS server instead of routing through Files for volumes/snapshots.<ul>
+<li>This solves occassional networking hiccups causing troubles when Files couldn&#39;t be accessed.</li>
+<li>This solves deployment across multiple namespaces as Files access was a stickler.</li>
+</ul>
+</li>
+<li>Health is now split into health and health-central.<ul>
+<li>health-central deploys with the main stack.<ul>
+<li>It takes care of metrics, traefik management, and NFS management.</li>
+</ul>
+</li>
+<li>health deploys with computer (health and spawner) in whatever namespace.<ul>
+<li>Takes care of Kubernetes health and management in a particular namespace.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>New deployment files for the above features along with deleting no longer used files.<ul>
+<li>Works locally as well.</li>
+</ul>
+</li>
+<li>Fix in traefik to properly throw a 500 so proxy backup in nginx works properly when no location is matched.</li>
+</ul>
+</li>
+<li>New features:<ul>
+<li>Added health deployment that doesn&#39;t restart, allowing for easier debugging.</li>
+<li>Improvements to NFS permissions</li>
+</ul>
+</li>
+<li>Bug fixes:<ul>
+<li>Improvements for health regarding processes when new tenants are created while already running.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </div>
+    <div id="icicle-release-2023-10">
+      <h1 id="icicle-release-2023-10">ICICLE Release 2023.10</h1>
+<p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
+more accessible to everyone and to drive its democratization further in solving larger societal problems. </p>
+<p>It is with great pleasure that we announce <strong><em>2023.10</em></strong> release of ICICLE CI components.</p>
+<p>This release includes the following components:</p>
+<h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
+<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+<h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
+<ul>
+<li><a href="https://datacommons.tdai.osu.edu/dataset.xhtml?persistentId=doi:10.5072/FK2/CQUURW"><strong>High Performance Computing Applications Dataset v1.0</strong></a><ul>
+<li>The <em>High Performance Computing Applications Dataset</em> is a colslection of information about loops in high-performance computing programs. The dataset includes details about different aspects of loops, like how many times they repeat and how they access data. It also provides advanced information about how the computer hardware behaves during the program&#39;s execution. This dataset is meant to help researchers and engineers improve their programs by understanding and optimizing these loops better.<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
+</li>
+</ul>
+</li>
+<li><a href="https://pypi.org/project/iciflaskn/"><strong>iciflaskn v1.0</strong></a><ul>
+<li>The <em>iciflaskn</em> package provides a Flask blueprint that can be registered with your Flask application to endow it with Tapis Federated Authentication Service based on OAuth2. Please visit the <a href="https://tapis.readthedocs.io/en/latest/technical/authentication.html#oauth-clients">Tapis documentaiton</a> and <a href="https://tapis-project.github.io/live-docs/?service=Authenticator#tag/Clients">Tapis APIs</a> to learn how to setup an authentication client for your application. </li>
+</ul>
+</li>
+</ul>
+<h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
+<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+<h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
+<ul>
+<li><a href="https://github.com/ICICLE-ai/harp"><strong>HPC Application Runtime Predictor (HARP) v2.0</strong></a><ul>
+<li>New Features<ol>
+<li>HARP is now Containerized! Profile your applications by configuring them with the new HARP containers.</li>
+<li>Available for use on both TACC and OSC systems via Tapis.</li>
+<li>New Jupyter Notebook available on Google Colab and for download in GitHub repository.<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><a href="https://pypi.org/project/TapisCL-ICICLE/"><strong>TapisCL-ICICLE v1.0.11</strong></a><ul>
+<li>Changes:<ol>
+<li>Added better positional support</li>
+<li>Fixed command parsing and validation server side</li>
+<li>Improved login UX with suggestions for auth type and tenant uri</li>
+<li>Improved help menus</li>
+<li>Added jobs commands</li>
+<li>Fixed data formatters to be more flexible</li>
+<li>Much improved UX for deeply nested forms for operations like system creation.</li>
+<li>Add support for loading existing data when updating services</li>
+<li>Fixed a minor issue with the &#39;exit&#39; command</li>
+<li>Improved support for jobs</li>
+<li>Bug fixes for postgres pods</li>
+<li>Fixed issues involving credential retrieval for pods</li>
+<li>Made snapshot commands their own thing</li>
+<li>Added authenticator clients command group</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href="https://pypi.org/project/ICICONSOLE/#description"><strong>ICICONSOLE v0.8.0</strong></a><ul>
+<li>Changes:<ol>
+<li>Added support for Knowledge Graph queries that return edges</li>
+<li>Added automation for creation and deletion within Knowledge Graphs, past read-only operations.</li>
+<li>Integrated Tapis federated authentication</li>
+<li>Integration with GPT-3.5 via OpenAI API for natural language queries</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="use-inspired-science">Use Inspired Science</h2>
+<h3 id="animal-ecology">Animal Ecology</h3>
+<ul>
+<li><a href="https://github.com/tapis-project/camera-traps"><strong>Camera-Traps Edge Simulator v0.3.2</strong></a><ul>
+<li>Changes:<ol>
+<li>Runtime configuration updates, principally involving changes to the <em>releases</em> directory structure.</li>
+<li>Improved release procedure documentation in top-level README file.   <h3 id="visual-analytics">Visual Analytics</h3>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><a href="https://vaapifrontend.pods.icicle.tapis.io/#/"><strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.3</strong></a><ul>
+<li>New Features:<ol>
+<li>OAuth2 Authentication added via Tapis Federated Authentication: Log in with your TACC or globus (University, National Lab, Google, etc) accounts. </li>
+</ol>
+</li>
+<li>Changes<ol>
+<li>Improved save/load functionalities; Saved data is now tied to your authenticated account.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>The ICICLE team is committed to delivering the best software and CI components. We welcome your feedback and suggestions for future releases. A list of all ICICLE components can be found on our website under <a href="https://icicle.ai/cyberinfrastructure/software">CI &amp; Software</a></p>
+<p>Please subscribe to <a href="https://lists.osu.edu/mailman/listinfo/icicle-discuss">icicle-discuss</a> and post to discuss all installation/build problems, performance issues, features and other miscellaneous questions related to the different software and CI components of the ICICLE project. You are welcome to post patches and enhancements to the released components.</p>
+<p>Subscribe to our mailing list <a href="https://lists.osu.edu/mailman/listinfo/icicle-announce">icicle-announce</a> to stay up to date on the latest ICICLE news and releases.</p>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p><em>This release is brought to you by the National Science Foundation (NSF) funded AI institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE) (OAC 2112606)</em></p>
+
+    </div>
     <div id="icicle-release-2023-06">
       <h1 id="icicle-release-2023-06">ICICLE Release 2023-06</h1>
       <p>
