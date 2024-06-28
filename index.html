@@ -1,1165 +1,1199 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ICICLE Release Notes</title>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 
-    <style>
-      /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-      /*---------------------------------------------------------------------------------------------
+<head>
+  <title>ICICLE Release Notes</title>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+  <style>
+    /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+    /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-      body {
-        font-family: var(
-          --vscode-markdown-font-family,
+    body {
+      font-family: var(--vscode-markdown-font-family,
           -apple-system,
           BlinkMacSystemFont,
           "Segoe WPC",
           "Segoe UI",
           "Ubuntu",
           "Droid Sans",
-          sans-serif
-        );
-        font-size: var(--vscode-markdown-font-size, 14px);
-        padding: 0 26px;
-        line-height: var(--vscode-markdown-line-height, 22px);
-        word-wrap: break-word;
-      }
+          sans-serif);
+      font-size: var(--vscode-markdown-font-size, 14px);
+      padding: 0 26px;
+      line-height: var(--vscode-markdown-line-height, 22px);
+      word-wrap: break-word;
+    }
 
-      #code-csp-warning {
-        position: fixed;
-        top: 0;
-        right: 0;
-        color: white;
-        margin: 16px;
-        text-align: center;
-        font-size: 12px;
-        font-family: sans-serif;
-        background-color: #444444;
-        cursor: pointer;
-        padding: 6px;
-        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
-      }
+    #code-csp-warning {
+      position: fixed;
+      top: 0;
+      right: 0;
+      color: white;
+      margin: 16px;
+      text-align: center;
+      font-size: 12px;
+      font-family: sans-serif;
+      background-color: #444444;
+      cursor: pointer;
+      padding: 6px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+    }
 
-      #code-csp-warning:hover {
-        text-decoration: none;
-        background-color: #007acc;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      }
+    #code-csp-warning:hover {
+      text-decoration: none;
+      background-color: #007acc;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
 
-      body.scrollBeyondLastLine {
-        margin-bottom: calc(100vh - 22px);
-      }
+    body.scrollBeyondLastLine {
+      margin-bottom: calc(100vh - 22px);
+    }
 
-      body.showEditorSelection .code-line {
-        position: relative;
-      }
+    body.showEditorSelection .code-line {
+      position: relative;
+    }
 
-      body.showEditorSelection .code-active-line:before,
-      body.showEditorSelection .code-line:hover:before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: -12px;
-        height: 100%;
-      }
+    body.showEditorSelection .code-active-line:before,
+    body.showEditorSelection .code-line:hover:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -12px;
+      height: 100%;
+    }
 
-      body.showEditorSelection li.code-active-line:before,
-      body.showEditorSelection li.code-line:hover:before {
-        left: -30px;
-      }
+    body.showEditorSelection li.code-active-line:before,
+    body.showEditorSelection li.code-line:hover:before {
+      left: -30px;
+    }
 
-      .vscode-light.showEditorSelection .code-active-line:before {
-        border-left: 3px solid rgba(0, 0, 0, 0.15);
-      }
+    .vscode-light.showEditorSelection .code-active-line:before {
+      border-left: 3px solid rgba(0, 0, 0, 0.15);
+    }
 
-      .vscode-light.showEditorSelection .code-line:hover:before {
-        border-left: 3px solid rgba(0, 0, 0, 0.4);
-      }
+    .vscode-light.showEditorSelection .code-line:hover:before {
+      border-left: 3px solid rgba(0, 0, 0, 0.4);
+    }
 
-      .vscode-light.showEditorSelection .code-line .code-line:hover:before {
-        border-left: none;
-      }
+    .vscode-light.showEditorSelection .code-line .code-line:hover:before {
+      border-left: none;
+    }
 
-      .vscode-dark.showEditorSelection .code-active-line:before {
-        border-left: 3px solid rgba(255, 255, 255, 0.4);
-      }
+    .vscode-dark.showEditorSelection .code-active-line:before {
+      border-left: 3px solid rgba(255, 255, 255, 0.4);
+    }
 
-      .vscode-dark.showEditorSelection .code-line:hover:before {
-        border-left: 3px solid rgba(255, 255, 255, 0.6);
-      }
+    .vscode-dark.showEditorSelection .code-line:hover:before {
+      border-left: 3px solid rgba(255, 255, 255, 0.6);
+    }
 
-      .vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-        border-left: none;
-      }
+    .vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+      border-left: none;
+    }
 
-      .vscode-high-contrast.showEditorSelection .code-active-line:before {
-        border-left: 3px solid rgba(255, 160, 0, 0.7);
-      }
+    .vscode-high-contrast.showEditorSelection .code-active-line:before {
+      border-left: 3px solid rgba(255, 160, 0, 0.7);
+    }
 
-      .vscode-high-contrast.showEditorSelection .code-line:hover:before {
-        border-left: 3px solid rgba(255, 160, 0, 1);
-      }
+    .vscode-high-contrast.showEditorSelection .code-line:hover:before {
+      border-left: 3px solid rgba(255, 160, 0, 1);
+    }
 
-      .vscode-high-contrast.showEditorSelection
-        .code-line
-        .code-line:hover:before {
-        border-left: none;
-      }
+    .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+      border-left: none;
+    }
 
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
 
-      a {
-        text-decoration: none;
-      }
+    a {
+      text-decoration: none;
+    }
 
-      a:hover {
-        text-decoration: underline;
-      }
+    a:hover {
+      text-decoration: underline;
+    }
 
-      a:focus,
-      input:focus,
-      select:focus,
-      textarea:focus {
-        outline: 1px solid -webkit-focus-ring-color;
-        outline-offset: -1px;
-      }
+    a:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 1px solid -webkit-focus-ring-color;
+      outline-offset: -1px;
+    }
 
-      hr {
-        border: 0;
-        height: 2px;
-        border-bottom: 2px solid;
-      }
+    hr {
+      border: 0;
+      height: 2px;
+      border-bottom: 2px solid;
+    }
 
-      h1 {
-        padding-bottom: 0.3em;
-        line-height: 1.2;
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-      }
+    h1 {
+      padding-bottom: 0.3em;
+      line-height: 1.2;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+    }
 
-      h1,
-      h2,
-      h3 {
-        font-weight: normal;
-      }
+    h1,
+    h2,
+    h3 {
+      font-weight: normal;
+    }
 
-      table {
-        border-collapse: collapse;
-      }
+    table {
+      border-collapse: collapse;
+    }
 
-      table > thead > tr > th {
-        text-align: left;
-        border-bottom: 1px solid;
-      }
+    table>thead>tr>th {
+      text-align: left;
+      border-bottom: 1px solid;
+    }
 
-      table > thead > tr > th,
-      table > thead > tr > td,
-      table > tbody > tr > th,
-      table > tbody > tr > td {
-        padding: 5px 10px;
-      }
+    table>thead>tr>th,
+    table>thead>tr>td,
+    table>tbody>tr>th,
+    table>tbody>tr>td {
+      padding: 5px 10px;
+    }
 
-      table > tbody > tr + tr > td {
-        border-top: 1px solid;
-      }
+    table>tbody>tr+tr>td {
+      border-top: 1px solid;
+    }
 
-      blockquote {
-        margin: 0 7px 0 5px;
-        padding: 0 16px 0 10px;
-        border-left-width: 5px;
-        border-left-style: solid;
-      }
+    blockquote {
+      margin: 0 7px 0 5px;
+      padding: 0 16px 0 10px;
+      border-left-width: 5px;
+      border-left-style: solid;
+    }
 
-      code {
-        font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
-          monospace, "Droid Sans Fallback";
-        font-size: 1em;
-        line-height: 1.357em;
-      }
+    code {
+      font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New",
+        monospace, "Droid Sans Fallback";
+      font-size: 1em;
+      line-height: 1.357em;
+    }
 
-      body.wordWrap pre {
-        white-space: pre-wrap;
-      }
+    body.wordWrap pre {
+      white-space: pre-wrap;
+    }
 
-      pre:not(.hljs),
-      pre.hljs code > div {
-        padding: 16px;
-        border-radius: 3px;
-        overflow: auto;
-      }
+    pre:not(.hljs),
+    pre.hljs code>div {
+      padding: 16px;
+      border-radius: 3px;
+      overflow: auto;
+    }
 
-      pre code {
-        color: var(--vscode-editor-foreground);
-        tab-size: 4;
-      }
+    pre code {
+      color: var(--vscode-editor-foreground);
+      tab-size: 4;
+    }
 
-      /** Theming */
+    /** Theming */
 
-      .vscode-light pre {
-        background-color: rgba(220, 220, 220, 0.4);
-      }
+    .vscode-light pre {
+      background-color: rgba(220, 220, 220, 0.4);
+    }
 
-      .vscode-dark pre {
-        background-color: rgba(10, 10, 10, 0.4);
-      }
+    .vscode-dark pre {
+      background-color: rgba(10, 10, 10, 0.4);
+    }
 
-      .vscode-high-contrast pre {
-        background-color: rgb(0, 0, 0);
-      }
+    .vscode-high-contrast pre {
+      background-color: rgb(0, 0, 0);
+    }
 
-      .vscode-high-contrast h1 {
-        border-color: rgb(0, 0, 0);
-      }
+    .vscode-high-contrast h1 {
+      border-color: rgb(0, 0, 0);
+    }
 
-      .vscode-light table > thead > tr > th {
-        border-color: rgba(0, 0, 0, 0.69);
-      }
+    .vscode-light table>thead>tr>th {
+      border-color: rgba(0, 0, 0, 0.69);
+    }
 
-      .vscode-dark table > thead > tr > th {
-        border-color: rgba(255, 255, 255, 0.69);
-      }
+    .vscode-dark table>thead>tr>th {
+      border-color: rgba(255, 255, 255, 0.69);
+    }
 
-      .vscode-light h1,
-      .vscode-light hr,
-      .vscode-light table > tbody > tr + tr > td {
-        border-color: rgba(0, 0, 0, 0.18);
-      }
+    .vscode-light h1,
+    .vscode-light hr,
+    .vscode-light table>tbody>tr+tr>td {
+      border-color: rgba(0, 0, 0, 0.18);
+    }
 
-      .vscode-dark h1,
-      .vscode-dark hr,
-      .vscode-dark table > tbody > tr + tr > td {
-        border-color: rgba(255, 255, 255, 0.18);
-      }
-    </style>
+    .vscode-dark h1,
+    .vscode-dark hr,
+    .vscode-dark table>tbody>tr+tr>td {
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+  </style>
 
-    <style>
-      /* Tomorrow Theme */
-      /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-      /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+  <style>
+    /* Tomorrow Theme */
+    /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+    /* Original theme - https://github.com/chriskempson/tomorrow-theme */
 
-      /* Tomorrow Comment */
-      .hljs-comment,
-      .hljs-quote {
-        color: #8e908c;
-      }
+    /* Tomorrow Comment */
+    .hljs-comment,
+    .hljs-quote {
+      color: #8e908c;
+    }
 
-      /* Tomorrow Red */
-      .hljs-variable,
-      .hljs-template-variable,
-      .hljs-tag,
-      .hljs-name,
-      .hljs-selector-id,
-      .hljs-selector-class,
-      .hljs-regexp,
-      .hljs-deletion {
-        color: #c82829;
-      }
+    /* Tomorrow Red */
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag,
+    .hljs-name,
+    .hljs-selector-id,
+    .hljs-selector-class,
+    .hljs-regexp,
+    .hljs-deletion {
+      color: #c82829;
+    }
 
-      /* Tomorrow Orange */
-      .hljs-number,
-      .hljs-built_in,
-      .hljs-builtin-name,
-      .hljs-literal,
-      .hljs-type,
-      .hljs-params,
-      .hljs-meta,
-      .hljs-link {
-        color: #f5871f;
-      }
+    /* Tomorrow Orange */
+    .hljs-number,
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-literal,
+    .hljs-type,
+    .hljs-params,
+    .hljs-meta,
+    .hljs-link {
+      color: #f5871f;
+    }
 
-      /* Tomorrow Yellow */
-      .hljs-attribute {
-        color: #eab700;
-      }
+    /* Tomorrow Yellow */
+    .hljs-attribute {
+      color: #eab700;
+    }
 
-      /* Tomorrow Green */
-      .hljs-string,
-      .hljs-symbol,
-      .hljs-bullet,
-      .hljs-addition {
-        color: #718c00;
-      }
+    /* Tomorrow Green */
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-addition {
+      color: #718c00;
+    }
 
-      /* Tomorrow Blue */
-      .hljs-title,
-      .hljs-section {
-        color: #4271ae;
-      }
+    /* Tomorrow Blue */
+    .hljs-title,
+    .hljs-section {
+      color: #4271ae;
+    }
 
-      /* Tomorrow Purple */
-      .hljs-keyword,
-      .hljs-selector-tag {
-        color: #8959a8;
-      }
+    /* Tomorrow Purple */
+    .hljs-keyword,
+    .hljs-selector-tag {
+      color: #8959a8;
+    }
 
-      .hljs {
-        display: block;
-        overflow-x: auto;
-        color: #4d4d4c;
-        padding: 0.5em;
-      }
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      color: #4d4d4c;
+      padding: 0.5em;
+    }
 
-      .hljs-emphasis {
-        font-style: italic;
-      }
+    .hljs-emphasis {
+      font-style: italic;
+    }
 
-      .hljs-strong {
-        font-weight: bold;
-      }
-    </style>
+    .hljs-strong {
+      font-weight: bold;
+    }
+  </style>
 
-    <style>
-      /*
+  <style>
+    /*
  * Markdown PDF CSS
  */
 
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
-          "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-        padding: 0 12px;
-      }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
+        "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+      padding: 0 12px;
+    }
 
-      pre {
-        background-color: #f8f8f8;
-        border: 1px solid #cccccc;
-        border-radius: 3px;
-        overflow-x: auto;
-        white-space: pre-wrap;
-        overflow-wrap: break-word;
-      }
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
 
-      pre:not(.hljs) {
-        padding: 23px;
-        line-height: 19px;
-      }
+    pre:not(.hljs) {
+      padding: 23px;
+      line-height: 19px;
+    }
 
-      blockquote {
-        background: rgba(127, 127, 127, 0.1);
-        border-color: rgba(0, 122, 204, 0.5);
-      }
+    blockquote {
+      background: rgba(127, 127, 127, 0.1);
+      border-color: rgba(0, 122, 204, 0.5);
+    }
 
-      .emoji {
-        height: 1.4em;
-      }
+    .emoji {
+      height: 1.4em;
+    }
 
-      code {
-        font-size: 14px;
-        line-height: 19px;
-      }
+    code {
+      font-size: 14px;
+      line-height: 19px;
+    }
 
-      /* for inline code */
-      :not(pre):not(.hljs) > code {
-        color: #c9ae75; /* Change the old color so it seems less like an error */
-        font-size: inherit;
-      }
+    /* for inline code */
+    :not(pre):not(.hljs)>code {
+      color: #c9ae75;
+      /* Change the old color so it seems less like an error */
+      font-size: inherit;
+    }
 
-      /* Page Break : use <div class="page"/> to insert page break
+    /* Page Break : use <div class="page"/> to insert page break
 -------------------------------------------------------- */
-      .page {
-        page-break-after: always;
-      }
-    </style>
+    .page {
+      page-break-after: always;
+    }
+  </style>
 
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-  </head>
-  <body>
-    <script>
-      mermaid.initialize({
-        startOnLoad: true,
-        theme:
-          document.body.classList.contains("vscode-dark") ||
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme:
+        document.body.classList.contains("vscode-dark") ||
           document.body.classList.contains("vscode-high-contrast")
-            ? "dark"
-            : "default",
-      });
-    </script>
-/*-------------------------------------------------------DO NOT EDIT ABOVE LINE--------------------------------------------------------------*/
+          ? "dark"
+          : "default",
+    });
+  </script>
+  <!------------------------------------------DO NOT EDIT ABOVE LINE--------------------------------------------------------------*/ -->
 
-    
-/*-------------------------------------------------------ADD NEW RELEASE NOTES BELOW--------------------------------------------------------------*/
-/*-------------------------------------------------------MAKE SURE TO CREATE A <div id="icicle-release-{year}-{month}></div>--------------------------------------------------------------*/
 
-<div id="icicle-release-2024-06">
-<h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
-<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
-<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
-<ul>
-<li><a href="https://icicleai.tapis.io/tapis-ui/#/"><strong>TapisUI v1.6.0</strong></a><ul>
-<li>Brand new dashboard to managing Tapis APIs with authentication and usability features. </li>
-<li>Use TapisUI to create and manage your workflows, pipelines, pods, and other essential services you use for your research and work.</li>
-</ul>
-</li>
-</ul>
-<h2 id="use-inspired-science">Use Inspired Science</h2>
-<h3 id="smart-foodsheds">Smart Foodsheds</h3>
-<ul>
-<li><a href="https://github.com/PPODschema/PPOD_Core/"><strong>PPOD (Persons-Projects-Organizations-Datasets) Core v0.5.0</strong></a><ul>
-<li>A LinkML schema describing the core elements of PPOD (Person-Project-Organization-Dataset) information</li>
-</ul>
-</li>
-</ul>
-<h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
-<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
-<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
-<ul>
-<li><a href="https://tapis.readthedocs.io/en/latest/technical/pods.html"><strong>Tapis Pods Service v1.6.0</strong></a><ul>
-<li>New Features:<ol>
-<li>Added local_only protocol in pods networking.</li>
-<li>GPU support within resources attributes.</li>
-</ol>
-</li>
-<li>Bug Fixes<ol>
-<li>Pinned templated Postgres version.</li>
-<li>Harden t init for startup.</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</div>
+  <!--------------------ADD NEW RELEASE NOTES BELOW--------------------------------------------------------------*/ -->
+  <!------------------MAKE SURE TO CREATE A <div id="icicle-release-{year}-{month}></div>-----------------------------*/ -->
+
+  <div id=" icicle-release-2024-06">
+    <h1 id="icicle-release-2024-06">ICICLE Release 2024-06</h1>
+    <p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
+      more accessible to everyone and to drive its democratization further in solving larger societal problems. </p>
+    <p>It is with great pleasure that we announce the <strong><em>2024-06</em></strong> release of ICICLE CI components.
+    </p>
+    <h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
+    <h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+    <h3 id="software-architecture-and-design">Software Architecture and Design</h3>
+    <ul>
+      <li><a href="https://icicleai.tapis.io/tapis-ui/#/"><strong>TapisUI v1.6.0</strong></a>
+        <ul>
+          <li>Brand new dashboard to managing Tapis APIs with authentication and usability features. </li>
+          <li>Use TapisUI to create and manage your workflows, pipelines, pods, and other essential services you use for
+            your research and work.</li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="use-inspired-science">Use Inspired Science</h2>
+    <h3 id="smart-foodsheds">Smart Foodsheds</h3>
+    <ul>
+      <li><a href="https://github.com/PPODschema/PPOD_Core/"><strong>PPOD (Persons-Projects-Organizations-Datasets) Core
+            v0.5.0</strong></a>
+        <ul>
+          <li>A LinkML schema describing the core elements of PPOD (Person-Project-Organization-Dataset) information
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
+    <h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+    <h3 id="software-architecture-and-design">Software Architecture and Design</h3>
+    <ul>
+      <li><a href="https://tapis.readthedocs.io/en/latest/technical/pods.html"><strong>Tapis Pods Service
+            v1.6.0</strong></a>
+        <ul>
+          <li>New Features:<ol>
+              <li>Added local_only protocol in pods networking.</li>
+              <li>GPU support within resources attributes.</li>
+            </ol>
+          </li>
+          <li>Bug Fixes<ol>
+              <li>Pinned templated Postgres version.</li>
+              <li>Harden t init for startup.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
   <div id="icicle-release-2024-01">
     <h1 id="icicle-release-2024-01">ICICLE Release 2024-01</h1>
-<p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
-more accessible to everyone and to drive its democratization further in solving larger societal problems. </p>
-<p>It is with great pleasure that we announce the <strong><em>2024-01</em></strong> release of ICICLE CI components.</p>
-<p>This release includes the following components:</p>
-<h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
-<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
-<h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
-<ul>
-<li><a href="https://github.com/COS-IN/iluvatar-faas/tree/icicle-release-v1"><strong>Iluvatar Functions as a Service (FaaS) Control Plane v1.0.0</strong></a><ul>
-<li>Iluvatar is an open Serverless platform built with the goal of jumpstarting and streamlining FaaS research. It provides a system that is easy and consistent to use, highly modifiable, and directly reports experimental results.</li>
-</ul>
-</li>
-</ul>
-<h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
-<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
-<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
-<ul>
-<li><a href="https://tapis.readthedocs.io/en/latest/technical/authentication.html#oauth-clients"><strong>Tapis Federated Authentication Service v1.5.0</strong></a><ul>
-<li>New features:<ul>
-<li>Tenants are now able to determine how long the MFA authentication should last before the user has to re-enter their MFA</li>
-<li>Updated HTML - all of the different pages of the authentication workflow now have updated design layouts</li>
-</ul>
-</li>
-<li>Bug Fixes:<ul>
-<li>The device code flow, starting with GET /v3/device?client_id=<client_id>, is now working for all login methods</li>
-<li>The language for the user code form of the device flow is now more clear</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><a href="https://tapis.readthedocs.io/en/latest/technical/pods.html"><strong>Tapis Pods Service v1.5.3</strong></a><ul>
-<li>Breaking Changes:<ul>
-<li>Implemented direct access to NFS server instead of routing through Files for volumes/snapshots.<ul>
-<li>This solves occassional networking hiccups causing troubles when Files couldn&#39;t be accessed.</li>
-<li>This solves deployment across multiple namespaces as Files access was a stickler.</li>
-</ul>
-</li>
-<li>Health is now split into health and health-central.<ul>
-<li>health-central deploys with the main stack.<ul>
-<li>It takes care of metrics, traefik management, and NFS management.</li>
-</ul>
-</li>
-<li>health deploys with computer (health and spawner) in whatever namespace.<ul>
-<li>Takes care of Kubernetes health and management in a particular namespace.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>New deployment files for the above features along with deleting no longer used files.<ul>
-<li>Works locally as well.</li>
-</ul>
-</li>
-<li>Fix in traefik to properly throw a 500 so proxy backup in nginx works properly when no location is matched.</li>
-</ul>
-</li>
-<li>New features:<ul>
-<li>Added health deployment that doesn&#39;t restart, allowing for easier debugging.</li>
-<li>Improvements to NFS permissions</li>
-</ul>
-</li>
-<li>Bug fixes:<ul>
-<li>Improvements for health regarding processes when new tenants are created while already running.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+    <p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
+      more accessible to everyone and to drive its democratization further in solving larger societal problems. </p>
+    <p>It is with great pleasure that we announce the <strong><em>2024-01</em></strong> release of ICICLE CI components.
+    </p>
+    <p>This release includes the following components:</p>
+    <h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
+    <h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+    <h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
+    <ul>
+      <li><a href="https://github.com/COS-IN/iluvatar-faas/tree/icicle-release-v1"><strong>Iluvatar Functions as a
+            Service (FaaS) Control Plane v1.0.0</strong></a>
+        <ul>
+          <li>Iluvatar is an open Serverless platform built with the goal of jumpstarting and streamlining FaaS
+            research. It provides a system that is easy and consistent to use, highly modifiable, and directly reports
+            experimental results.</li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
+    <h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+    <h3 id="software-architecture-and-design">Software Architecture and Design</h3>
+    <ul>
+      <li><a href="https://tapis.readthedocs.io/en/latest/technical/authentication.html#oauth-clients"><strong>Tapis
+            Federated Authentication Service v1.5.0</strong></a>
+        <ul>
+          <li>New features:<ul>
+              <li>Tenants are now able to determine how long the MFA authentication should last before the user has to
+                re-enter their MFA</li>
+              <li>Updated HTML - all of the different pages of the authentication workflow now have updated design
+                layouts</li>
+            </ul>
+          </li>
+          <li>Bug Fixes:<ul>
+              <li>The device code flow, starting with GET /v3/device?client_id=<client_id>, is now working for all login
+                  methods</li>
+              <li>The language for the user code form of the device flow is now more clear</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li><a href="https://tapis.readthedocs.io/en/latest/technical/pods.html"><strong>Tapis Pods Service
+            v1.5.3</strong></a>
+        <ul>
+          <li>Breaking Changes:<ul>
+              <li>Implemented direct access to NFS server instead of routing through Files for volumes/snapshots.<ul>
+                  <li>This solves occassional networking hiccups causing troubles when Files couldn&#39;t be accessed.
+                  </li>
+                  <li>This solves deployment across multiple namespaces as Files access was a stickler.</li>
+                </ul>
+              </li>
+              <li>Health is now split into health and health-central.<ul>
+                  <li>health-central deploys with the main stack.<ul>
+                      <li>It takes care of metrics, traefik management, and NFS management.</li>
+                    </ul>
+                  </li>
+                  <li>health deploys with computer (health and spawner) in whatever namespace.<ul>
+                      <li>Takes care of Kubernetes health and management in a particular namespace.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>New deployment files for the above features along with deleting no longer used files.<ul>
+                  <li>Works locally as well.</li>
+                </ul>
+              </li>
+              <li>Fix in traefik to properly throw a 500 so proxy backup in nginx works properly when no location is
+                matched.</li>
+            </ul>
+          </li>
+          <li>New features:<ul>
+              <li>Added health deployment that doesn&#39;t restart, allowing for easier debugging.</li>
+              <li>Improvements to NFS permissions</li>
+            </ul>
+          </li>
+          <li>Bug fixes:<ul>
+              <li>Improvements for health regarding processes when new tenants are created while already running.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
-    <div id="icicle-release-2023-10">
-      <h1 id="icicle-release-2023-10">ICICLE Release 2023-10</h1>
-<p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
-more accessible to everyone and to drive its democratization further in solving larger societal problems. </p>
-<p>It is with great pleasure that we announce <strong><em>2023-10</em></strong> release of ICICLE CI components.</p>
-<p>This release includes the following components:</p>
-<h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
-<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
-<h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
-<ul>
-<li><a href="https://datacommons.tdai.osu.edu/dataset.xhtml?persistentId=doi:10.5072/FK2/CQUURW"><strong>High Performance Computing Applications Dataset v1.0</strong></a><ul>
-<li>The <em>High Performance Computing Applications Dataset</em> is a colslection of information about loops in high-performance computing programs. The dataset includes details about different aspects of loops, like how many times they repeat and how they access data. It also provides advanced information about how the computer hardware behaves during the program&#39;s execution. This dataset is meant to help researchers and engineers improve their programs by understanding and optimizing these loops better.<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
-</li>
-</ul>
-</li>
-<li><a href="https://pypi.org/project/iciflaskn/"><strong>iciflaskn v1.0</strong></a><ul>
-<li>The <em>iciflaskn</em> package provides a Flask blueprint that can be registered with your Flask application to endow it with Tapis Federated Authentication Service based on OAuth2. Please visit the <a href="https://tapis.readthedocs.io/en/latest/technical/authentication.html#oauth-clients">Tapis documentaiton</a> and <a href="https://tapis-project.github.io/live-docs/?service=Authenticator#tag/Clients">Tapis APIs</a> to learn how to setup an authentication client for your application. </li>
-</ul>
-</li>
-</ul>
-<h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
-<h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
-<h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
-<ul>
-<li><a href="https://github.com/ICICLE-ai/harp"><strong>HPC Application Runtime Predictor (HARP) v2.0</strong></a><ul>
-<li>New Features<ol>
-<li>HARP is now Containerized! Profile your applications by configuring them with the new HARP containers.</li>
-<li>Available for use on both TACC and OSC systems via Tapis.</li>
-<li>New Jupyter Notebook available on Google Colab and for download in GitHub repository.<h3 id="software-architecture-and-design">Software Architecture and Design</h3>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><a href="https://pypi.org/project/TapisCL-ICICLE/"><strong>TapisCL-ICICLE v1.0.11</strong></a><ul>
-<li>Changes:<ol>
-<li>Added better positional support</li>
-<li>Fixed command parsing and validation server side</li>
-<li>Improved login UX with suggestions for auth type and tenant uri</li>
-<li>Improved help menus</li>
-<li>Added jobs commands</li>
-<li>Fixed data formatters to be more flexible</li>
-<li>Much improved UX for deeply nested forms for operations like system creation.</li>
-<li>Add support for loading existing data when updating services</li>
-<li>Fixed a minor issue with the &#39;exit&#39; command</li>
-<li>Improved support for jobs</li>
-<li>Bug fixes for postgres pods</li>
-<li>Fixed issues involving credential retrieval for pods</li>
-<li>Made snapshot commands their own thing</li>
-<li>Added authenticator clients command group</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><a href="https://pypi.org/project/ICICONSOLE/#description"><strong>ICICONSOLE v0.8.0</strong></a><ul>
-<li>Changes:<ol>
-<li>Added support for Knowledge Graph queries that return edges</li>
-<li>Added automation for creation and deletion within Knowledge Graphs, past read-only operations.</li>
-<li>Integrated Tapis federated authentication</li>
-<li>Integration with GPT-3.5 via OpenAI API for natural language queries</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="use-inspired-science">Use Inspired Science</h2>
-<h3 id="animal-ecology">Animal Ecology</h3>
-<ul>
-<li><a href="https://github.com/tapis-project/camera-traps"><strong>Camera-Traps Edge Simulator v0.3.2</strong></a><ul>
-<li>Changes:<ol>
-<li>Runtime configuration updates, principally involving changes to the <em>releases</em> directory structure.</li>
-<li>Improved release procedure documentation in top-level README file.   <h3 id="visual-analytics">Visual Analytics</h3>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><a href="https://vaapifrontend.pods.icicle.tapis.io/#/"><strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.3</strong></a><ul>
-<li>New Features:<ol>
-<li>OAuth2 Authentication added via Tapis Federated Authentication: Log in with your TACC or globus (University, National Lab, Google, etc) accounts. </li>
-</ol>
-</li>
-<li>Changes<ol>
-<li>Improved save/load functionalities; Saved data is now tied to your authenticated account.</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-    </div>
-    <div id="icicle-release-2023-06">
-      <h1 id="icicle-release-2023-06">ICICLE Release 2023-06</h1>
-      <p>
-        The ICICLE team aims to build the next generation Cyberinfrastructure
-        (CI) to render Artificial Intelligence (AI) more accessible to everyone
-        and to drive its democratization further in solving larger societal
-        problems.
-      </p>
-      <p>
-        It is with great pleasure that we announce
-        <em><strong>2023-06</strong></em> release of ICICLE CI components.
-      </p>
-      <p>This release includes the following components:</p>
-      <h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
-      <h2 id="intelligent-cyberinfrastructure">
-        Intelligent Cyberinfrastructure
-      </h2>
-      <h3 id="ai-foundations">AI Foundations</h3>
-      <ul>
-        <li>
-          <p><strong>ICICLE Foodshed Parser v0.1</strong></p>
-          <ul>
-            <li>
-              A Conversational AI model, which users can interact with it
-              regarding food insecurity queries. The model responds with a list
-              of commands in which an agent-based model can be run to simulate
-              food insecurity levels in a given region.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p>
-            <strong
-              >Species Classification using Multimodal Heterogeneous Context
-              v0.1.0</strong
-            >
-          </p>
-          <ul>
-            <li>
-              A species classification model that utilizes heterogeneous image
-              contexts organized in a multimodal knowledge graph. The multimodal
-              knowledge graph may include diverse forms of heterogeneous
-              contexts that pertain to different modalities, such as numerical
-              information for locations and time, categorical data for
-              species/taxon IDs, and visual content such as images.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>Region2vec v1.0</strong></p>
-          <ul>
-            <li>
-              Region2vec is a Community Detection algorithm on Spatial Networks
-              that uses graph embeddings with node attributes and spatial
-              interactions. Region2vec first generates node embeddings for
-              regions that share common attributes and have intense spatial
-              interactions, and then applies clustering algorithms to detect
-              communities based on their embedding similarity and geographic
-              adjacency.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h3 id="software-architecture-and-design">
-        Software Architecture and Design
-      </h3>
-      <ul>
-        <li>
-          <p><strong>Tapis Federated Authentication Service v1.3.4</strong></p>
-          <ul>
-            <li>
-              The Tapis Federated Authentication Service provides OAuth2-based
-              authentication module that allows third-party applications to
-              authenticate users from different identity providers. Including
-              university credentials, HPC center accounts (e.g., TACC accounts),
-              and web and social login (e.g., GitHub, Google, etc).
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>ICICONSOLE v0.0.10</strong></p>
-          <ul>
-            <li>
-              First a part of Hello ICICLE Authentication Clients v0.0.1,
-              ICICONSOLE is now a PyPI package. The command line interface (CLI)
-              tool to authenticate with the Tapis Pods service. The tool allows
-              the user to manage, operate, and interactively explore Tapis
-              services.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>TapisCL-ICICLE v0.1.4</strong></p>
-          <ul>
-            <li>
-              The ICICLE CLI tool to interact with Tapis is officially its own
-              component coming from Hello ICICLE Authentication Clients v0.0.1.
-              TapisCL-ICICLE now utilizes the Tapis Federated Authentication
-              Service.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h2 id="use-inspired-science">Use Inspired Science</h2>
-      <h3 id="digital-agriculture">Digital Agriculture</h3>
-      <ul>
-        <li>
-          <p><strong>ICICLE Digital Agriculture Hub v1.0</strong></p>
-          <ul>
-            <li>
-              The Digital Agriculture Hub is the source for end users to access
-              data-driven, edge services such as aerial scouting and sprayer
-              control, and to initiate cloud jobs for agricultural workloads.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>Far-Edge Edge Simulator v1.0</strong></p>
-          <ul>
-            <li>
-              This tool is used to simulate power demands, cpu usage and other
-              far-edge metrics for aerial missions. You can use Far-Edge Edge
-              Simulator by visiting the Digital Agriculture Hub and selecting
-              the &quot;Far-Edge Edge Simulator&quot; tab.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>In-Field Helper for Crop Scouts v1.0</strong></p>
-          <ul>
-            <li>
-              Given (1) a set of agricultural images labeled by a neural network
-              and (2) a set of images on a new field, this tool explains to
-              scouts if the images of the new field fully vet the neural
-              network. Go to the Digital Agriculture Hub and select the
-              &quot;In-Field Helper for Crop Scouts&quot; tab to use this tool.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h3 id="smart-foodsheds">Smart Foodsheds</h3>
-      <ul>
-        <li>
-          <p>
-            <strong
-              >Persons-Projects-Organizations-Datasets California (PPOD_CA)
-              Knowledge Graph v23.06</strong
-            >
-          </p>
-          <ul>
-            <li>
-              PPOD_CA is a knowledge graph of PPOD information describing
-              connections between environmental conservation and the food system
-              in California.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>Kroger Store Closure v0.1</strong></p>
-          <ul>
-            <li>
-              This prototype web application provides users with an engaging and
-              interactive platform to explore an agent-based model. The model
-              allows for dynamic simulations and captures the complex
-              interactions between different types of households and markets. By
-              utilizing this model, users can gain valuable insights into the
-              food insecurity levels experienced by various types of households.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h1 id="icicle-ci-components-changelog">
-        ICICLE CI Components Changelog
-      </h1>
-      <h2 id="intelligent-cyberinfrastructure">
-        Intelligent Cyberinfrastructure
-      </h2>
-      <h3 id="software-architecture-and-design">
-        Software Architecture and Design
-      </h3>
-      <ul>
-        <li>
-          <p><strong>Tapis Pods Service v1.3.2</strong></p>
-          <ul>
-            <li>
-              New features:
-              <ol>
-                <li>
-                  Added volume and snapshot support/utils/models/etc. Using nfs
-                  pvc storage to volume mount block storage to running pods.
-                  Users can share volumes and collaborate live on the same
-                  storage. Snapshots allow users to take copies of volumes for
-                  data versioning purposes.
-                </li>
-                <li>
-                  Traefik proxying now automatically creates certificates at
-                  runtime for each subdomain (meaning each pod).
-                </li>
-                <li>
-                  Service no longer requires initial, or any, manual certificate
-                  creation.
-                </li>
-                <li>Some edits for Neo4j as it requires a injected cert.</li>
-                <li>
-                  Changes for local dev as it's now different from deployment.
-                </li>
-              </ol>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>TapisCL-ICICLE v0.1.4</strong></p>
-          <ul>
-            <li>
-              Changes:
-              <ol>
-                <li>
-                  Added Tapis federated authentication, and device code
-                  authentication grant types to allow for more flexible access
-                  to Tapis resources. Full revamp of the whole authentication
-                  workflow.
-                </li>
-                <li>
-                  Overhaul of user interface and command entry to provide better
-                  interactivity with commands that previously required config
-                  files to execute properly
-                </li>
-                <li>
-                  More effective command line argument validation to sanitize
-                  data input
-                </li>
-                <li>
-                  Overhaul of files and systems to grant user access to
-                  additional Tapis resources (WIP). Files and systems strive to
-                  emulate linux bash command line, using commands like cd and
-                  ls.
-                </li>
-                <li>Support for Tapis postits added</li>
-              </ol>
-            </li>
-            <li>
-              Planned Changes:
-              <ol>
-                <li>
-                  Finish upgrading system authentication to fully complete
-                  system access
-                </li>
-                <li>
-                  Upgrade app commands and eventually implement intuitive job
-                  submission
-                </li>
-                <li>Refactor help generation code</li>
-              </ol>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>ICICONSOLE v0.0.10</strong></p>
-          <ul>
-            <li>
-              Changes:
-              <ol>
-                <li>
-                  Improved user interface for select queries. Now, the user can
-                  select a query from a list of available queries (help
-                  command), and the query will be executed automatically. This
-                  works toward an automated process for querying Knowledge
-                  Graphs.
-                </li>
-                <li>
-                  For Knowledge Graph queries that return entire node(s), a
-                  separate view will be opened to display the node in a more
-                  readable format. In this view, scrolling is enabled to see the
-                  complete data in the confined space of the terminal.
-                </li>
-                <li>Minor bug fixes</li>
-              </ol>
-            </li>
-            <li>
-              Planned Changes:
-              <ol>
-                <li>
-                  Add support for Knowledge Graph queries that return edges
-                </li>
-                <li>
-                  Add automation for creation and deletion within Knowledge
-                  Graphs, past read-only operations.
-                </li>
-                <li>Integrate Tapis federated authentication</li>
-                <li>
-                  Create a natural language interface for querying Knowledge
-                  Graphs, which would automate the automation process itself.
-                  This would be a long-term goal, and would require a lot of
-                  research and development.
-                </li>
-              </ol>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h2 id="use-inspired-science">Use Inspired Science</h2>
-      <h3 id="animal-ecology">Animal Ecology</h3>
-      <ul>
-        <li>
-          <strong>Camera-Traps Edge Simulator v0.3.1</strong>
-          <ul>
-            <li>
-              Changes:
-              <ol>
-                <li>Support for 2 new power monitoring events</li>
-                <li>
-                  Removal of image_uuid field from ImageLabelScore type used in
-                  ImageScoredEvent.
-                </li>
-                <li>
-                  MonitorPowerStartEvent and MonitorPowerStopEvent implemented
-                  in Rust (Python support in progress).
-                </li>
-                <li>
-                  The image_store_plugin deletes files of all types associated
-                  with an image when that image is deleted.
-                </li>
-              </ol>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h3 id="visual-analytics">Visual Analytics</h3>
-      <ul>
-        <li>
-          <strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.2</strong>
-          <ul>
-            <li>
-              New Features:
-              <ol>
-                <li>
-                  Added save/load functionalities, allowing users to bring their
-                  own data and share data in the future.
-                </li>
-              </ol>
-            </li>
-            <li>
-              Changes:
-              <ol>
-                <li>
-                  Default graph animation is set to static, providing better
-                  placement of the graph within the panel.
-                </li>
-                <li>
-                  Implemented automatic coloring scheme to differentiate between
-                  different node types.
-                </li>
-                <li>
-                  Replaced the reset graph function with an undo function,
-                  providing a more intuitive experience for users.
-                </li>
-                <li>Fixed various minor UI issues.</li>
-              </ol>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div id="icicle-release-2023-04">
-      <h1 id="icicle-release-2023-04">ICICLE Release 2023-04</h1>
-      <p>
-        The ICICLE team aims to build the next generation Cyberinfrastructure
-        (CI) to render Artificial Intelligence (AI) more accessible to everyone
-        and to drive its democratization further in solving larger societal
-        problems.
-      </p>
-      <p>
-        It is with great pleasure that we announce the first release of ICICLE
-        CI components version <em><strong>2023-04</strong></em
-        >.
-      </p>
-      <p>This release includes the following components:</p>
-      <h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
-      <h2 id="intelligent-cyberinfrastructure">
-        Intelligent Cyberinfrastructure
-      </h2>
-      <h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
-      <ul>
-        <li>
-          <p><strong>HPC Application Runtime Predictor (HARP) v1.0</strong></p>
-          <ul>
-            <li>
-              The HARP framework is used to generate a history of executions
-              with the help of human-in-loop (pre-defined configurations) and
-              train suitable regression models to estimate the approximate
-              execution time for a targeted application.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>Intelligent Sparse Library (iSipLib) v1.0</strong></p>
-          <ul>
-            <li>
-              iSipLib is an accelerated sparse kernel library with a PyTorch
-              interface. It aims to provide efficient sparse operations for
-              Graph Neural Network implementations.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h3 id="software-architecture-and-design">
-        Software Architecture and Design
-      </h3>
-      <ul>
-        <li>
-          <p><strong>Base ICICLE Tapis Software v1.3.0</strong></p>
-          <ul>
-            <li>
-              Tapis is a hosted, web-based API framework for securely managing
-              computational workloads across infrastructure and institutions so
-              that experts can focus on their research instead of the
-              technology.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>Event Engine v0.2.0</strong></p>
-          <ul>
-            <li>
-              The Event Engine is a framework for edge simulators and for
-              writing event-based applications in <em>Rust</em>. The Event
-              Engine utilizes a <em>plugin</em> architecture so that they can be
-              written in multiple languages.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>Hello ICICLE Authentication Clients v0.0.1</strong></p>
-          <ul>
-            <li>
-              Hello ICICLE Authentication consists of two command line interface
-              (CLI) tools to authenticate with the Tapis Pods service. The first
-              tool, ICICONSOLE, is specifically tailored to working with Neo4j
-              databases hosted through the Tapis Pods. The second tool,
-              TapisCL-ICICLE, allows the user to manage, operate, and
-              interactively explore Tapis services.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>Tapis Pods Service v1.3.0</strong></p>
-          <ul>
-            <li>
-              The Tapis Pods Service provides a web service and distributed
-              platform providing Pods-as-a-Service platform via Kubernetes. The
-              primary use of this service is to provide quick to deploy
-              long-lived services based on Docker images that are exposed via
-              HTTP or TCP endpoints.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p><strong>CI Components Catalog v0.1.0</strong></p>
-          <ul>
-            <li>
-              Hosted using our Tapis Pods Service, the CI Components Catalog
-              showcases the most up-to-date released ICICLE CI components
-              available to the public.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h2 id="use-inspired-science">Use Inspired Science</h2>
-      <h3 id="animal-ecology">Animal Ecology</h3>
-      <ul>
-        <li>
-          <strong>Camera-Traps Edge Simulator v0.3.0</strong>
-          <ul>
-            <li>
-              Both a simulator and an edge device application for classifying
-              images with the first deployment specializing in wildlife images.
-              The Camera-Traps Edge Simulator utilizes the Event Engine to
-              implement its <em>plugin</em> architecture and
-              <em>event-driven</em> communication.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h3 id="digital-agriculture">Digital Agriculture</h3>
-      <ul>
-        <li>
-          <strong>SoftwarePilot v1.2.5</strong>
-          <ul>
-            <li>
-              SoftwarePilot is an open-source middleware and API that supports
-              aerial applications. It allows users to connect consumer Parrot
-              Anafi drones and access the drone's flight controller, camera, and
-              navigation system via Python scripts. SoftwarePilot can also
-              communicate with applications via a REST API and built-in Docker
-              integration.
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <h3 id="smart-foodsheds">Smart Foodsheds</h3>
-      <ul>
-        <li>
-          <p>
-            <strong
-              >Persons-Projects-Organizations-Datasets (PPOD) Schema
-              v0.9.1</strong
-            >
-          </p>
-          <ul>
-            <li>
-              A LinkML schema for a version of the PPOD
-              (Persons-Projects-Organizations-Datasets) data pattern that
-              describes resources being cataloged by the UC Davis Food Systems
-              Lab. These resources are pertinent to California foodsheds and
-              conservation activities and include lists of organizations,
-              people, programs, projects, tools, datasets, guidelines, and
-              mandates.
-            </li>
-          </ul>
-        </li>
-        <li>
-          <p>
-            <strong
-              >Smart Foodsheds Visual Analytics (VA) Dashboard v0.1</strong
-            >
-          </p>
-          <ul>
-            <li>
-              Hosted using our Tapis Pods Service, the Smart Foodsheds VA
-              Dashboard is a visual analytics system built for smart foodsheds
-              that offers a dynamic and engaging way to explore graph data. The
-              dashboard currently has access to PPOD and Cold Chain datasets.
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div id="acknowledgements">
-      <p>
-        The ICICLE team is committed to delivering the best software and CI
-        components. We welcome your feedback and suggestions for future
-        releases. A list of all ICICLE components can be found on our website
-        under
-        <a href="https://icicle.ai/cyberinfrastructure/software"
-          >CI &amp; Software</a
-        >
-      </p>
-      <p>
-        Please subscribe to
-        <a href="https://lists.osu.edu/mailman/listinfo/icicle-discuss"
-          >icicle-discuss</a
-        >
-        and post to discuss all installation/build problems, performance issues,
-        features and other miscellaneous questions related to the different
-        software and CI components of the ICICLE project. You are welcome to
-        post patches and enhancements to the released components.
-      </p>
-      <p>
-        Subscribe to our mailing list
-        <a href="https://lists.osu.edu/mailman/listinfo/icicle-announce"
-          >icicle-announce</a
-        >
-        to stay up to date on the latest ICICLE news and releases.
-      </p>
-      <h1 id="acknowledgements">Acknowledgements</h1>
-      <p>
-        <em
-          >This release is brought to you by the National Science Foundation
-          (NSF) funded AI institute for Intelligent Cyberinfrastructure with
-          Computational Learning in the Environment (ICICLE) (OAC 2112606)</em
-        >
-      </p>
-    </div>
-  </body>
+  <div id="icicle-release-2023-10">
+    <h1 id="icicle-release-2023-10">ICICLE Release 2023-10</h1>
+    <p>The ICICLE team aims to build the next generation Cyberinfrastructure (CI) to render Artificial Intelligence (AI)
+      more accessible to everyone and to drive its democratization further in solving larger societal problems. </p>
+    <p>It is with great pleasure that we announce <strong><em>2023-10</em></strong> release of ICICLE CI components.</p>
+    <p>This release includes the following components:</p>
+    <h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
+    <h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+    <h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
+    <ul>
+      <li><a href="https://datacommons.tdai.osu.edu/dataset.xhtml?persistentId=doi:10.5072/FK2/CQUURW"><strong>High
+            Performance Computing Applications Dataset v1.0</strong></a>
+        <ul>
+          <li>The <em>High Performance Computing Applications Dataset</em> is a colslection of information about loops
+            in high-performance computing programs. The dataset includes details about different aspects of loops, like
+            how many times they repeat and how they access data. It also provides advanced information about how the
+            computer hardware behaves during the program&#39;s execution. This dataset is meant to help researchers and
+            engineers improve their programs by understanding and optimizing these loops better.<h3
+              id="software-architecture-and-design">Software Architecture and Design</h3>
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://pypi.org/project/iciflaskn/"><strong>iciflaskn v1.0</strong></a>
+        <ul>
+          <li>The <em>iciflaskn</em> package provides a Flask blueprint that can be registered with your Flask
+            application to endow it with Tapis Federated Authentication Service based on OAuth2. Please visit the <a
+              href="https://tapis.readthedocs.io/en/latest/technical/authentication.html#oauth-clients">Tapis
+              documentaiton</a> and <a
+              href="https://tapis-project.github.io/live-docs/?service=Authenticator#tag/Clients">Tapis APIs</a> to
+            learn how to setup an authentication client for your application. </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="icicle-ci-components-changelog">ICICLE CI Components Changelog</h1>
+    <h2 id="intelligent-cyberinfrastructure">Intelligent Cyberinfrastructure</h2>
+    <h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
+    <ul>
+      <li><a href="https://github.com/ICICLE-ai/harp"><strong>HPC Application Runtime Predictor (HARP) v2.0</strong></a>
+        <ul>
+          <li>New Features<ol>
+              <li>HARP is now Containerized! Profile your applications by configuring them with the new HARP containers.
+              </li>
+              <li>Available for use on both TACC and OSC systems via Tapis.</li>
+              <li>New Jupyter Notebook available on Google Colab and for download in GitHub repository.<h3
+                  id="software-architecture-and-design">Software Architecture and Design</h3>
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://pypi.org/project/TapisCL-ICICLE/"><strong>TapisCL-ICICLE v1.0.11</strong></a>
+        <ul>
+          <li>Changes:<ol>
+              <li>Added better positional support</li>
+              <li>Fixed command parsing and validation server side</li>
+              <li>Improved login UX with suggestions for auth type and tenant uri</li>
+              <li>Improved help menus</li>
+              <li>Added jobs commands</li>
+              <li>Fixed data formatters to be more flexible</li>
+              <li>Much improved UX for deeply nested forms for operations like system creation.</li>
+              <li>Add support for loading existing data when updating services</li>
+              <li>Fixed a minor issue with the &#39;exit&#39; command</li>
+              <li>Improved support for jobs</li>
+              <li>Bug fixes for postgres pods</li>
+              <li>Fixed issues involving credential retrieval for pods</li>
+              <li>Made snapshot commands their own thing</li>
+              <li>Added authenticator clients command group</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li><a href="https://pypi.org/project/ICICONSOLE/#description"><strong>ICICONSOLE v0.8.0</strong></a>
+        <ul>
+          <li>Changes:<ol>
+              <li>Added support for Knowledge Graph queries that return edges</li>
+              <li>Added automation for creation and deletion within Knowledge Graphs, past read-only operations.</li>
+              <li>Integrated Tapis federated authentication</li>
+              <li>Integration with GPT-3.5 via OpenAI API for natural language queries</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="use-inspired-science">Use Inspired Science</h2>
+    <h3 id="animal-ecology">Animal Ecology</h3>
+    <ul>
+      <li><a href="https://github.com/tapis-project/camera-traps"><strong>Camera-Traps Edge Simulator
+            v0.3.2</strong></a>
+        <ul>
+          <li>Changes:<ol>
+              <li>Runtime configuration updates, principally involving changes to the <em>releases</em> directory
+                structure.</li>
+              <li>Improved release procedure documentation in top-level README file. <h3 id="visual-analytics">Visual
+                  Analytics</h3>
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li><a href="https://vaapifrontend.pods.icicle.tapis.io/#/"><strong>Smart Foodsheds Visual Analytics (VA)
+            Dashboard v0.3</strong></a>
+        <ul>
+          <li>New Features:<ol>
+              <li>OAuth2 Authentication added via Tapis Federated Authentication: Log in with your TACC or globus
+                (University, National Lab, Google, etc) accounts. </li>
+            </ol>
+          </li>
+          <li>Changes<ol>
+              <li>Improved save/load functionalities; Saved data is now tied to your authenticated account.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="icicle-release-2023-06">
+    <h1 id="icicle-release-2023-06">ICICLE Release 2023-06</h1>
+    <p>
+      The ICICLE team aims to build the next generation Cyberinfrastructure
+      (CI) to render Artificial Intelligence (AI) more accessible to everyone
+      and to drive its democratization further in solving larger societal
+      problems.
+    </p>
+    <p>
+      It is with great pleasure that we announce
+      <em><strong>2023-06</strong></em> release of ICICLE CI components.
+    </p>
+    <p>This release includes the following components:</p>
+    <h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
+    <h2 id="intelligent-cyberinfrastructure">
+      Intelligent Cyberinfrastructure
+    </h2>
+    <h3 id="ai-foundations">AI Foundations</h3>
+    <ul>
+      <li>
+        <p><strong>ICICLE Foodshed Parser v0.1</strong></p>
+        <ul>
+          <li>
+            A Conversational AI model, which users can interact with it
+            regarding food insecurity queries. The model responds with a list
+            of commands in which an agent-based model can be run to simulate
+            food insecurity levels in a given region.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Species Classification using Multimodal Heterogeneous Context
+            v0.1.0</strong>
+        </p>
+        <ul>
+          <li>
+            A species classification model that utilizes heterogeneous image
+            contexts organized in a multimodal knowledge graph. The multimodal
+            knowledge graph may include diverse forms of heterogeneous
+            contexts that pertain to different modalities, such as numerical
+            information for locations and time, categorical data for
+            species/taxon IDs, and visual content such as images.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Region2vec v1.0</strong></p>
+        <ul>
+          <li>
+            Region2vec is a Community Detection algorithm on Spatial Networks
+            that uses graph embeddings with node attributes and spatial
+            interactions. Region2vec first generates node embeddings for
+            regions that share common attributes and have intense spatial
+            interactions, and then applies clustering algorithms to detect
+            communities based on their embedding similarity and geographic
+            adjacency.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="software-architecture-and-design">
+      Software Architecture and Design
+    </h3>
+    <ul>
+      <li>
+        <p><strong>Tapis Federated Authentication Service v1.3.4</strong></p>
+        <ul>
+          <li>
+            The Tapis Federated Authentication Service provides OAuth2-based
+            authentication module that allows third-party applications to
+            authenticate users from different identity providers. Including
+            university credentials, HPC center accounts (e.g., TACC accounts),
+            and web and social login (e.g., GitHub, Google, etc).
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>ICICONSOLE v0.0.10</strong></p>
+        <ul>
+          <li>
+            First a part of Hello ICICLE Authentication Clients v0.0.1,
+            ICICONSOLE is now a PyPI package. The command line interface (CLI)
+            tool to authenticate with the Tapis Pods service. The tool allows
+            the user to manage, operate, and interactively explore Tapis
+            services.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>TapisCL-ICICLE v0.1.4</strong></p>
+        <ul>
+          <li>
+            The ICICLE CLI tool to interact with Tapis is officially its own
+            component coming from Hello ICICLE Authentication Clients v0.0.1.
+            TapisCL-ICICLE now utilizes the Tapis Federated Authentication
+            Service.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="use-inspired-science">Use Inspired Science</h2>
+    <h3 id="digital-agriculture">Digital Agriculture</h3>
+    <ul>
+      <li>
+        <p><strong>ICICLE Digital Agriculture Hub v1.0</strong></p>
+        <ul>
+          <li>
+            The Digital Agriculture Hub is the source for end users to access
+            data-driven, edge services such as aerial scouting and sprayer
+            control, and to initiate cloud jobs for agricultural workloads.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Far-Edge Edge Simulator v1.0</strong></p>
+        <ul>
+          <li>
+            This tool is used to simulate power demands, cpu usage and other
+            far-edge metrics for aerial missions. You can use Far-Edge Edge
+            Simulator by visiting the Digital Agriculture Hub and selecting
+            the &quot;Far-Edge Edge Simulator&quot; tab.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>In-Field Helper for Crop Scouts v1.0</strong></p>
+        <ul>
+          <li>
+            Given (1) a set of agricultural images labeled by a neural network
+            and (2) a set of images on a new field, this tool explains to
+            scouts if the images of the new field fully vet the neural
+            network. Go to the Digital Agriculture Hub and select the
+            &quot;In-Field Helper for Crop Scouts&quot; tab to use this tool.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="smart-foodsheds">Smart Foodsheds</h3>
+    <ul>
+      <li>
+        <p>
+          <strong>Persons-Projects-Organizations-Datasets California (PPOD_CA)
+            Knowledge Graph v23.06</strong>
+        </p>
+        <ul>
+          <li>
+            PPOD_CA is a knowledge graph of PPOD information describing
+            connections between environmental conservation and the food system
+            in California.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Kroger Store Closure v0.1</strong></p>
+        <ul>
+          <li>
+            This prototype web application provides users with an engaging and
+            interactive platform to explore an agent-based model. The model
+            allows for dynamic simulations and captures the complex
+            interactions between different types of households and markets. By
+            utilizing this model, users can gain valuable insights into the
+            food insecurity levels experienced by various types of households.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h1 id="icicle-ci-components-changelog">
+      ICICLE CI Components Changelog
+    </h1>
+    <h2 id="intelligent-cyberinfrastructure">
+      Intelligent Cyberinfrastructure
+    </h2>
+    <h3 id="software-architecture-and-design">
+      Software Architecture and Design
+    </h3>
+    <ul>
+      <li>
+        <p><strong>Tapis Pods Service v1.3.2</strong></p>
+        <ul>
+          <li>
+            New features:
+            <ol>
+              <li>
+                Added volume and snapshot support/utils/models/etc. Using nfs
+                pvc storage to volume mount block storage to running pods.
+                Users can share volumes and collaborate live on the same
+                storage. Snapshots allow users to take copies of volumes for
+                data versioning purposes.
+              </li>
+              <li>
+                Traefik proxying now automatically creates certificates at
+                runtime for each subdomain (meaning each pod).
+              </li>
+              <li>
+                Service no longer requires initial, or any, manual certificate
+                creation.
+              </li>
+              <li>Some edits for Neo4j as it requires a injected cert.</li>
+              <li>
+                Changes for local dev as it's now different from deployment.
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>TapisCL-ICICLE v0.1.4</strong></p>
+        <ul>
+          <li>
+            Changes:
+            <ol>
+              <li>
+                Added Tapis federated authentication, and device code
+                authentication grant types to allow for more flexible access
+                to Tapis resources. Full revamp of the whole authentication
+                workflow.
+              </li>
+              <li>
+                Overhaul of user interface and command entry to provide better
+                interactivity with commands that previously required config
+                files to execute properly
+              </li>
+              <li>
+                More effective command line argument validation to sanitize
+                data input
+              </li>
+              <li>
+                Overhaul of files and systems to grant user access to
+                additional Tapis resources (WIP). Files and systems strive to
+                emulate linux bash command line, using commands like cd and
+                ls.
+              </li>
+              <li>Support for Tapis postits added</li>
+            </ol>
+          </li>
+          <li>
+            Planned Changes:
+            <ol>
+              <li>
+                Finish upgrading system authentication to fully complete
+                system access
+              </li>
+              <li>
+                Upgrade app commands and eventually implement intuitive job
+                submission
+              </li>
+              <li>Refactor help generation code</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>ICICONSOLE v0.0.10</strong></p>
+        <ul>
+          <li>
+            Changes:
+            <ol>
+              <li>
+                Improved user interface for select queries. Now, the user can
+                select a query from a list of available queries (help
+                command), and the query will be executed automatically. This
+                works toward an automated process for querying Knowledge
+                Graphs.
+              </li>
+              <li>
+                For Knowledge Graph queries that return entire node(s), a
+                separate view will be opened to display the node in a more
+                readable format. In this view, scrolling is enabled to see the
+                complete data in the confined space of the terminal.
+              </li>
+              <li>Minor bug fixes</li>
+            </ol>
+          </li>
+          <li>
+            Planned Changes:
+            <ol>
+              <li>
+                Add support for Knowledge Graph queries that return edges
+              </li>
+              <li>
+                Add automation for creation and deletion within Knowledge
+                Graphs, past read-only operations.
+              </li>
+              <li>Integrate Tapis federated authentication</li>
+              <li>
+                Create a natural language interface for querying Knowledge
+                Graphs, which would automate the automation process itself.
+                This would be a long-term goal, and would require a lot of
+                research and development.
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="use-inspired-science">Use Inspired Science</h2>
+    <h3 id="animal-ecology">Animal Ecology</h3>
+    <ul>
+      <li>
+        <strong>Camera-Traps Edge Simulator v0.3.1</strong>
+        <ul>
+          <li>
+            Changes:
+            <ol>
+              <li>Support for 2 new power monitoring events</li>
+              <li>
+                Removal of image_uuid field from ImageLabelScore type used in
+                ImageScoredEvent.
+              </li>
+              <li>
+                MonitorPowerStartEvent and MonitorPowerStopEvent implemented
+                in Rust (Python support in progress).
+              </li>
+              <li>
+                The image_store_plugin deletes files of all types associated
+                with an image when that image is deleted.
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="visual-analytics">Visual Analytics</h3>
+    <ul>
+      <li>
+        <strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.2</strong>
+        <ul>
+          <li>
+            New Features:
+            <ol>
+              <li>
+                Added save/load functionalities, allowing users to bring their
+                own data and share data in the future.
+              </li>
+            </ol>
+          </li>
+          <li>
+            Changes:
+            <ol>
+              <li>
+                Default graph animation is set to static, providing better
+                placement of the graph within the panel.
+              </li>
+              <li>
+                Implemented automatic coloring scheme to differentiate between
+                different node types.
+              </li>
+              <li>
+                Replaced the reset graph function with an undo function,
+                providing a more intuitive experience for users.
+              </li>
+              <li>Fixed various minor UI issues.</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="icicle-release-2023-04">
+    <h1 id="icicle-release-2023-04">ICICLE Release 2023-04</h1>
+    <p>
+      The ICICLE team aims to build the next generation Cyberinfrastructure
+      (CI) to render Artificial Intelligence (AI) more accessible to everyone
+      and to drive its democratization further in solving larger societal
+      problems.
+    </p>
+    <p>
+      It is with great pleasure that we announce the first release of ICICLE
+      CI components version <em><strong>2023-04</strong></em>.
+    </p>
+    <p>This release includes the following components:</p>
+    <h1 id="new-to-icicle-ci-catalog">New to ICICLE CI Catalog</h1>
+    <h2 id="intelligent-cyberinfrastructure">
+      Intelligent Cyberinfrastructure
+    </h2>
+    <h3 id="ai-for-ci-for-ai">AI for CI-for-AI</h3>
+    <ul>
+      <li>
+        <p><strong>HPC Application Runtime Predictor (HARP) v1.0</strong></p>
+        <ul>
+          <li>
+            The HARP framework is used to generate a history of executions
+            with the help of human-in-loop (pre-defined configurations) and
+            train suitable regression models to estimate the approximate
+            execution time for a targeted application.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Intelligent Sparse Library (iSipLib) v1.0</strong></p>
+        <ul>
+          <li>
+            iSipLib is an accelerated sparse kernel library with a PyTorch
+            interface. It aims to provide efficient sparse operations for
+            Graph Neural Network implementations.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="software-architecture-and-design">
+      Software Architecture and Design
+    </h3>
+    <ul>
+      <li>
+        <p><strong>Base ICICLE Tapis Software v1.3.0</strong></p>
+        <ul>
+          <li>
+            Tapis is a hosted, web-based API framework for securely managing
+            computational workloads across infrastructure and institutions so
+            that experts can focus on their research instead of the
+            technology.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Event Engine v0.2.0</strong></p>
+        <ul>
+          <li>
+            The Event Engine is a framework for edge simulators and for
+            writing event-based applications in <em>Rust</em>. The Event
+            Engine utilizes a <em>plugin</em> architecture so that they can be
+            written in multiple languages.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Hello ICICLE Authentication Clients v0.0.1</strong></p>
+        <ul>
+          <li>
+            Hello ICICLE Authentication consists of two command line interface
+            (CLI) tools to authenticate with the Tapis Pods service. The first
+            tool, ICICONSOLE, is specifically tailored to working with Neo4j
+            databases hosted through the Tapis Pods. The second tool,
+            TapisCL-ICICLE, allows the user to manage, operate, and
+            interactively explore Tapis services.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Tapis Pods Service v1.3.0</strong></p>
+        <ul>
+          <li>
+            The Tapis Pods Service provides a web service and distributed
+            platform providing Pods-as-a-Service platform via Kubernetes. The
+            primary use of this service is to provide quick to deploy
+            long-lived services based on Docker images that are exposed via
+            HTTP or TCP endpoints.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>CI Components Catalog v0.1.0</strong></p>
+        <ul>
+          <li>
+            Hosted using our Tapis Pods Service, the CI Components Catalog
+            showcases the most up-to-date released ICICLE CI components
+            available to the public.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2 id="use-inspired-science">Use Inspired Science</h2>
+    <h3 id="animal-ecology">Animal Ecology</h3>
+    <ul>
+      <li>
+        <strong>Camera-Traps Edge Simulator v0.3.0</strong>
+        <ul>
+          <li>
+            Both a simulator and an edge device application for classifying
+            images with the first deployment specializing in wildlife images.
+            The Camera-Traps Edge Simulator utilizes the Event Engine to
+            implement its <em>plugin</em> architecture and
+            <em>event-driven</em> communication.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="digital-agriculture">Digital Agriculture</h3>
+    <ul>
+      <li>
+        <strong>SoftwarePilot v1.2.5</strong>
+        <ul>
+          <li>
+            SoftwarePilot is an open-source middleware and API that supports
+            aerial applications. It allows users to connect consumer Parrot
+            Anafi drones and access the drone's flight controller, camera, and
+            navigation system via Python scripts. SoftwarePilot can also
+            communicate with applications via a REST API and built-in Docker
+            integration.
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h3 id="smart-foodsheds">Smart Foodsheds</h3>
+    <ul>
+      <li>
+        <p>
+          <strong>Persons-Projects-Organizations-Datasets (PPOD) Schema
+            v0.9.1</strong>
+        </p>
+        <ul>
+          <li>
+            A LinkML schema for a version of the PPOD
+            (Persons-Projects-Organizations-Datasets) data pattern that
+            describes resources being cataloged by the UC Davis Food Systems
+            Lab. These resources are pertinent to California foodsheds and
+            conservation activities and include lists of organizations,
+            people, programs, projects, tools, datasets, guidelines, and
+            mandates.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Smart Foodsheds Visual Analytics (VA) Dashboard v0.1</strong>
+        </p>
+        <ul>
+          <li>
+            Hosted using our Tapis Pods Service, the Smart Foodsheds VA
+            Dashboard is a visual analytics system built for smart foodsheds
+            that offers a dynamic and engaging way to explore graph data. The
+            dashboard currently has access to PPOD and Cold Chain datasets.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div id="acknowledgements">
+    <p>
+      The ICICLE team is committed to delivering the best software and CI
+      components. We welcome your feedback and suggestions for future
+      releases. A list of all ICICLE components can be found on our website
+      under
+      <a href="https://icicle.ai/cyberinfrastructure/software">CI &amp; Software</a>
+    </p>
+    <p>
+      Please subscribe to
+      <a href="https://lists.osu.edu/mailman/listinfo/icicle-discuss">icicle-discuss</a>
+      and post to discuss all installation/build problems, performance issues,
+      features and other miscellaneous questions related to the different
+      software and CI components of the ICICLE project. You are welcome to
+      post patches and enhancements to the released components.
+    </p>
+    <p>
+      Subscribe to our mailing list
+      <a href="https://lists.osu.edu/mailman/listinfo/icicle-announce">icicle-announce</a>
+      to stay up to date on the latest ICICLE news and releases.
+    </p>
+    <h1 id="acknowledgements">Acknowledgements</h1>
+    <p>
+      <em>This release is brought to you by the National Science Foundation
+        (NSF) funded AI institute for Intelligent Cyberinfrastructure with
+        Computational Learning in the Environment (ICICLE) (OAC 2112606)</em>
+    </p>
+  </div>
+</body>
+
 </html>
